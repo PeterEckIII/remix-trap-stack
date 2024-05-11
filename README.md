@@ -109,7 +109,7 @@ npm run dev
 ## Deployment
 
 The Trap Stack leaves deployment up to the user. When choosing a hosting provider it is best to remember the following
-* This stack is built with 
+* This stack is built with Vite, so make sure your hosting provider supports it!
 
 First, build your app for production:
 
@@ -133,3 +133,5 @@ Make sure to deploy the output of `npm run build`
 
 - `build/server`
 - `build/client`
+
+**Note**: Make sure to edit the `./.github/deploy.yml` file -- especially the `Deploy` section at the bottom -- with your chosen host provider

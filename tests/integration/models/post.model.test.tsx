@@ -23,6 +23,6 @@ describe("Post model", () => {
 
     const result = await getPost(post.id);
 
-    expect(result.title).toBe(post.title);
+    expect(result?.title).toBe(post.title);
   });
 });

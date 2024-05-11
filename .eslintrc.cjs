@@ -14,6 +14,9 @@ module.exports = {
       jsx: true,
     },
   },
+  "rules": {
+    "no-mixed-spaces-and-tabs": 0, // disable rule
+  },
   env: {
     browser: true,
     commonjs: true,
@@ -28,12 +31,11 @@ module.exports = {
     // React
     {
       files: ["**/*.{js,jsx,ts,tsx}"],
-      plugins: ["react", "jsx-a11y"],
+      plugins: ["react"],
       extends: [
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
-        "plugin:jsx-a11y/recommended",
       ],
       settings: {
         react: {
