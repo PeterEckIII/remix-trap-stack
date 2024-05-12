@@ -1,5 +1,13 @@
 # The Trap Stack
 
+![The Remix Trap Stack](https://plus.unsplash.com/premium_photo-1682369072483-0fb34850d601?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
+Learn more about [Remix Stacks](https://remix.run/stacks)
+
+```
+npx create-remix@latest --template PeterEckIII/remix-trap-stack
+```
+
 ## What's Included
 - [Remix ❤️ Vite](https://remix.run/docs/en/main/future/vite)
 - [Remix Developer Tools](https://remix-development-tools.fly.dev/)
@@ -14,6 +22,8 @@
 - Industry-standard code formatting with [Prettier](https://prettier.io/)
 - Linting via [ESLint](https://eslint.org/)
 - Static type checking via [Typescript](https://www.typescriptlang.org/)
+
+Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
 
 ## UI
 
