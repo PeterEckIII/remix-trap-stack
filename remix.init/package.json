@@ -1,0 +1,15 @@
+{
+  "name": "remix.init",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@npmcli/package-json": "^5.1.0",
+    "semver": "^7.6.2"
+  }
+}
