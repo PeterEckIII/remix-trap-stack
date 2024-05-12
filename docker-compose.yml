@@ -20,7 +20,7 @@ services:
     restart: always
     volumes:
       - ./data/redis:/data
-columes
+volumes:
   db:
     driver: local
   redis:
