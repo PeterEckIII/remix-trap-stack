@@ -1,6 +1,6 @@
 # The Trap Stack
 
-![The Remix Trap Stack](https://asset.cloudinary.com/jpeckiii/f6ac1ae9817c1204d196e799a300ecd6)
+![The Remix Trap Stack](https://res.cloudinary.com/jpeckiii/image/upload/v1715532886/common/dj_concert_wuj4ph_Sharpened_cyyuzu.jpg)
 
 Learn more about [Remix Stacks](https://remix.run/stacks)
 
