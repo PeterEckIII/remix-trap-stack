@@ -14,7 +14,7 @@ npx create-remix@latest --template PeterEckIII/remix-trap-stack
 - ORM and Postgresql setup with [Prisma](https://www.prisma.io/)
 - Styling with [Tailwindcss](https://tailwindcss.com/)
 - UI development iteration with [Storybook](https://storybook.js.org/)
-- Custom SVG sprite icon generation with type checking
+- Custom SVG sprite icon generation with type checking thanks to [Jacob Paris' great blog post](https://www.jacobparis.com/content/svg-icons)
 - Plug-and-play components courtesy of [shadcn-ui](https://ui.shadcn.com/)
 - Test database powered by [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
 - Unit testing with [Testing Library](https://testing-library.com/) and [Vitest](https://vitest.dev/)
