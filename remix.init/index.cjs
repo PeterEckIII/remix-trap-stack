@@ -6,10 +6,9 @@ const path = require("node:path");
 const PackageJson = require("@npmcli/package-json");
 const semver = require("semver");
 
-const escapeRegExp = (string) => 
-  string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const getPackageManagerCommand = (packageManager) => 
+const getPackageManagerCommand = (packageManager) =>
   ({
     bun: () => ({
       exec: "bunx",
@@ -35,7 +34,7 @@ const getPackageManagerCommand = (packageManager) =>
         run: (script, args) =>
           includeDoubleDashBeforeArgs
             ? `pnpm run ${script} ${args ? `--${args}` : ""}`
-            : `pnpm run ${script} ${args || ""}`
+            : `pnpm run ${script} ${args || ""}`,
       };
     },
     yarn: () => ({
@@ -44,7 +43,7 @@ const getPackageManagerCommand = (packageManager) =>
       name: "yarn",
       run: (script, args) => `yarn ${script} ${args || ""}`,
     }),
-  })[packageManager]();
+  }[packageManager]());
 
 const getPackageManagerVersion = (packageManager) =>
   execSync(`${packageManager} --version`).toString("utf-8").trim();
@@ -54,8 +53,8 @@ const getRandomString = (length) => crypto.randomBytes(length).toString("hex");
 const removeUnusedDependencies = (dependencies, unusedDependencies) =>
   Object.fromEntries(
     Object.entries(dependencies).filter(
-      ([key]) => !unusedDependencies.includes(key),
-    ),
+      ([key]) => !unusedDependencies.includes(key)
+    )
   );
 
 const updatePackageJson = ({ APP_NAME, packageJson, packageManager }) => {
@@ -67,7 +66,7 @@ const updatePackageJson = ({ APP_NAME, packageJson, packageManager }) => {
       "format:repo": _repoFormatScript,
       ...scripts
     },
-  } = packageJson.content
+  } = packageJson.content;
 
   packageJson.update({
     name: APP_NAME,
@@ -89,24 +88,19 @@ const updatePackageJson = ({ APP_NAME, packageJson, packageManager }) => {
 const main = async ({ packageManager, rootDirectory }) => {
   const pm = getPackageManagerCommand(packageManager);
 
-  const README_PATH = path.join(rootDirectory, "README.md")
+  const README_PATH = path.join(rootDirectory, "README.md");
   const EXAMPLE_ENV_PATH = path.join(rootDirectory, ".env.example");
   const ENV_PATH = path.join(rootDirectory, ".env");
   const DOCKERFILE_PATH = path.join(rootDirectory, "Dockerfile");
 
-  const REPLACER = "trap-stack-tempalate"
+  const REPLACER = "trap-stack-tempalate";
 
   const DIR_NAME = path.basename(rootDirectory);
   const SUFFIX = getRandomString(2);
 
   const APP_NAME = (DIR_NAME + "-" + SUFFIX).replace(/[^a-zA-Z0-9-_]/g, "-");
 
-  const [
-    readme,
-    env,
-    dockerfile,
-    packageJson,
-  ] = await Promise.all([
+  const [readme, env, dockerfile, packageJson] = await Promise.all([
     fs.readFile(README_PATH, "utf-8"),
     fs.readFile(EXAMPLE_ENV_PATH, "utf-8"),
     fs.readFile(DOCKERFILE_PATH, "utf-8"),
@@ -114,8 +108,8 @@ const main = async ({ packageManager, rootDirectory }) => {
   ]);
 
   const newEnv = env.replace(
-  /^SESSION_SECRET=.*$/m,
-  `SESSION_SECRET=${getRandomString(16)}`
+    /^SESSION_SECRET=.*$/m,
+    `SESSION_SECRET=${getRandomString(16)}`
   );
 
   const initInstructions = `
@@ -129,17 +123,21 @@ const main = async ({ packageManager, rootDirectory }) => {
     \`\`\`
   `;
 
-  const newReadme = readme.replace(new RegExp(escapeRegExp(REPLACER), "g", APP_NAME)
-    .replace(initInstructions, ""));
+  const newReadme = readme.replace(
+    new RegExp(escapeRegExp(REPLACER), "g", APP_NAME).replace(
+      initInstructions,
+      ""
+    )
+  );
 
   const newDockerfile = pm.lockfile
     ? dockerfile.replace(
-      new RegExp(escapeRegExp("ADD package.json"), "g"),
-      `ADD package.json ${pm.lockfile}`,
-    )
+        new RegExp(escapeRegExp("ADD package.json"), "g"),
+        `ADD package.json ${pm.lockfile}`
+      )
     : dockerfile;
 
-  updatePackageJson({ APP_NAME, packageJson, packageManager: pm })
+  updatePackageJson({ APP_NAME, packageJson, packageManager: pm });
 
   await Promise.all([
     fs.writeFile(README_PATH, newReadme),
@@ -148,7 +146,7 @@ const main = async ({ packageManager, rootDirectory }) => {
     packageJson.save(),
     fs.copyFile(
       path.join(rootDirectory, "remix.init", "gitignore"),
-      path.join(rootDirectory, ".gitignore"),
+      path.join(rootDirectory, ".gitignore")
     ),
     fs.rm(path.join(rootDirectory, ".github", "ISSUE_TEMPLATE"), {
       recursive: true,
@@ -180,7 +178,7 @@ const main = async ({ packageManager, rootDirectory }) => {
 
     - You're now ready to go!
     ${pm.run("dev")}
-    `.trim(),
+    `.trim()
   );
 };
 

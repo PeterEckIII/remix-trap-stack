@@ -14,7 +14,7 @@ module.exports = {
       jsx: true,
     },
   },
-  "rules": {
+  rules: {
     "no-mixed-spaces-and-tabs": 0, // disable rule
   },
   env: {

@@ -5,8 +5,7 @@ import { createUser } from "~/models/user.server";
 export const createNormalUser = (user?: Omit<User, "id">) => {
   return createUser({
     email: faker.internet.email().toLowerCase(),
-    firstName: faker.internet.displayName(),
-    lastName: faker.internet.displayName(),
+    username: faker.internet.displayName(),
     role: "USER",
     ...user,
   });
@@ -15,9 +14,8 @@ export const createNormalUser = (user?: Omit<User, "id">) => {
 export const createAdminUser = (user?: Omit<User, "id">) => {
   return createUser({
     email: faker.internet.email().toLowerCase(),
+    username: faker.internet.displayName(),
     role: "ADMIN",
-    firstName: faker.internet.displayName(),
-    lastName: faker.internet.displayName(),
     ...user,
   });
 };

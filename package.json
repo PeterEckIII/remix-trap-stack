@@ -5,11 +5,16 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
+    "db:connect:dev": "npm run script\"PG_PASSWORD=$(grep SUPABASE_DB_PASSWORD .env | cut -d '=' -f2) psql -h <SUPABASE_DATABASE_URL> -p 5432 postgres -U postgres.<ID>\"",
+    "db:connect:test": "npm run script \"PG_PASSWORD=$(grep DB_PASSWORD .env.test | cut d '=' -f2) psql -h localhost -p 5433 -d tests -U prisma\" test",
     "db:up": "docker compose up -d db",
     "db:down": "docker compose down db",
+    "db:seed": "npm run script \"prisma db seed\" confirm",
     "dev": "remix vite:dev",
     "execute": "node --experimental-specifier-resolution=node --loader ./loader.js",
+    "format": "prettier --loglevel=silent --write .",
     "icons": "npm run script scripts/icons.ts",
+    "precommit": "npm run script \"npm run format && npm run lint && npm run typecheck && npm run setup\"",
     "pree2e": "npm run script \"npm run db:up && npx prisma migrate deploy\"",
     "e2e": "playwright test",
     "poste2e": "npm run db:down",
@@ -21,8 +26,9 @@
     "integration": "vitest run --config ./vitest.integration.ts",
     "postintegration": "npm run db:down",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/server/index.js",
     "script": "npm run execute scripts/setup.ts",
+    "setup": "prisma generate && prisma migrate deploy && prisma db seed",
+    "start": "remix-serve ./build/server/index.js",
     "storybook": "storybook dev -p 6006",
     "storybook-build": "storybook build",
     "typecheck": "tsc",
@@ -96,5 +102,8 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "prisma": {
+    "seed": "npx ts-node --esm prisma/seed.ts"
   }
 }

@@ -1,5 +1,5 @@
-import { defineConfig, devices } from 'playwright/test';
-import process from 'process';
+import { defineConfig, devices } from "playwright/test";
+import process from "process";
 
 export default defineConfig({
   testDir: "tests/e2e",
@@ -22,5 +22,5 @@ export default defineConfig({
     command: "pnpm run dev",
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
-  }
-})
+  },
+});

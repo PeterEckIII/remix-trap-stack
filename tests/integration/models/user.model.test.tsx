@@ -6,8 +6,7 @@ describe("User model", () => {
 
     const result = await createUser({
       email: "test@email.com",
-      firstName: "Test",
-      lastName: "User",
+      username: "testUser",
       role: "USER",
     });
 

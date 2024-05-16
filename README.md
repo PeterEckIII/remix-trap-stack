@@ -9,6 +9,7 @@ npx create-remix@latest --template PeterEckIII/remix-trap-stack
 ```
 
 ## What's Included
+
 - [Remix ❤️ Vite](https://remix.run/docs/en/main/future/vite)
 - [Remix Developer Tools](https://remix-development-tools.fly.dev/)
 - ORM and Postgresql setup with [Prisma](https://www.prisma.io/)
@@ -116,10 +117,35 @@ Run the Vite dev server:
 npm run dev
 ```
 
+## Databases
+
+The databases are isolated to ensure dev, prod, and testing environments work seamlessly.
+
+### Development Environment
+
+The `SUPABASE_PASSWORD` environment variable informs the dev environment how to connect to the development database
+
+To connect to the dev environment database run:
+
+```
+npm run db:connect:dev
+```
+
+### Test Environment
+
+The `docker-compose.yml` file pulls a Postgres image and creates the database using the `DATABASE_URL` environment variable in the `.env.test` file
+
+To connect to the test environment database run:
+
+```
+npm run db:connect:test
+```
+
 ## Deployment
 
 The Trap Stack leaves deployment up to the user. When choosing a hosting provider it is best to remember the following
-* This stack is built with Vite, so make sure your hosting provider supports it!
+
+- This stack is built with Vite, so make sure your hosting provider supports it!
 
 First, build your app for production:
 
