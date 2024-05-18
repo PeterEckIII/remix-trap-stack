@@ -8,6 +8,7 @@ export default defineConfig({
     poolOptions: {
       threads: {
         maxThreads: 1,
+        minThreads: 1,
       },
     },
     setupFiles: ["./tests/setup.integration.ts"],

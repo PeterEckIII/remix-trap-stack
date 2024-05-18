@@ -51,6 +51,14 @@ module.exports = {
         },
       },
     },
+    // shadcn=ui
+    {
+      files: ["./app/components/ui/**/*"],
+      rules: {
+        "react/prop-types": "off",
+        "react-refresh/only-export-components": "off",
+      },
+    },
 
     // Typescript
     {

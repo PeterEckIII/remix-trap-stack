@@ -15,6 +15,7 @@ npx create-remix@latest --template PeterEckIII/remix-trap-stack
 - ORM and Postgresql setup with [Prisma](https://www.prisma.io/)
 - Styling with [Tailwindcss](https://tailwindcss.com/)
 - UI development iteration with [Storybook](https://storybook.js.org/)
+- Dark/Light theme enabled + responsive Navbar
 - Custom SVG sprite icon generation with type checking thanks to [Jacob Paris' great blog post](https://www.jacobparis.com/content/svg-icons)
 - Plug-and-play components courtesy of [shadcn-ui](https://ui.shadcn.com/)
 - Test database powered by [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
@@ -170,4 +171,4 @@ Make sure to deploy the output of `npm run build`
 - `build/server`
 - `build/client`
 
-**Note**: Make sure to edit the `./.github/deploy.yml` file -- especially the `Deploy` section at the bottom -- with your chosen host provider
+**Note**: Make sure to edit the `./.github/deploy.yml` file to include instructions from your chosen host provider
