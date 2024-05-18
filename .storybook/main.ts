@@ -34,7 +34,7 @@ const config: StorybookConfig = {
         alias: [
           {
             find: "~",
-            replacement: "./app/*",
+            replacement: "/app",
           },
         ],
       },

@@ -7,13 +7,5 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [tsConfigPaths()],
-    resolve: {
-      alias: [
-        {
-          find: "~",
-          replacement: "./app/*",
-        },
-      ],
-    },
   };
 });
