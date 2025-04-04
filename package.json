@@ -11,6 +11,7 @@
     "db:down": "docker compose down db",
     "db:seed": "npm run script \"prisma db seed\" confirm",
     "dev": "remix vite:dev",
+    "docker": "docker compose up -d",
     "execute": "node --experimental-specifier-resolution=node --loader ./loader.js",
     "format": "prettier --loglevel=silent --write .",
     "icons": "npm run script scripts/icons.ts",
